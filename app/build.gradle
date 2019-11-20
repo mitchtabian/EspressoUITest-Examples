@@ -89,13 +89,6 @@ dependencies {
     implementation "androidx.navigation:navigation-runtime:$nav_version"
 }
 
-// we need all open to run tests which we enable only for debug builds.
-project.tasks.whenTaskAdded {
-    if (it.name == "testReleaseUnitTest") {
-        it.enabled = false
-    }
-}
-
 
 
 
