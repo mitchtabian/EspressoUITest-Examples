@@ -1,12 +1,15 @@
-package com.codingwithmitch.espressouitestexamples
+package com.codingwithmitch.espressouitestexamples.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.codingwithmitch.espressouitestexamples.R
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
 }
