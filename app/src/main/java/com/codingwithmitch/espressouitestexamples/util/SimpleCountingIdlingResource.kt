@@ -28,6 +28,7 @@ import java.util.concurrent.atomic.AtomicInteger
  *
  * This class can then be used to wrap up operations that while in progress should block tests from
  * accessing the UI.
+ * https://github.com/googlecodelabs/android-testing/blob/codelab2019/app/src/main/java/com/example/android/architecture/blueprints/todoapp/util/SimpleCountingIdlingResource.kt
  */
 class SimpleCountingIdlingResource(private val resourceName: String) : IdlingResource {
 

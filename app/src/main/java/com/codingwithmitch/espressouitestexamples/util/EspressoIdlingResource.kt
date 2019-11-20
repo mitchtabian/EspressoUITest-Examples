@@ -19,6 +19,7 @@ import androidx.test.espresso.IdlingResource
 
 /**
  * Contains a static reference to [IdlingResource], only available in the 'mock' build type.
+ * https://github.com/googlecodelabs/android-testing/blob/codelab2019/app/src/main/java/com/example/android/architecture/blueprints/todoapp/util/SimpleCountingIdlingResource.kt
  */
 object EspressoIdlingResource {
 
