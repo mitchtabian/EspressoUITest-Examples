@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.DataSource
@@ -49,7 +50,7 @@ class MainFragment : Fragment(){
 
         button_next_fragment.setOnClickListener {
             viewModel.reset()
-            findNavController().navigate(R.id.action_mainFragment_to_secondaryFragment)
+            navController().navigate(R.id.action_mainFragment_to_secondaryFragment)
         }
 
         button_next_activity.setOnClickListener {
@@ -94,6 +95,12 @@ class MainFragment : Fragment(){
         display_text.text = ""
         display_text.visibility = View.INVISIBLE
     }
+
+    /**
+     * Created to be able to override in tests
+     */
+    fun navController() = findNavController()
+
 }
 
 
