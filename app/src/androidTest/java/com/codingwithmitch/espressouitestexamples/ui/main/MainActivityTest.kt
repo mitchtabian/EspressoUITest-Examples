@@ -1,6 +1,5 @@
 package com.codingwithmitch.espressouitestexamples.ui.main
 
-import android.view.View
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
