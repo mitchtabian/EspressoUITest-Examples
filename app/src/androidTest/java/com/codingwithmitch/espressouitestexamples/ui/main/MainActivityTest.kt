@@ -45,8 +45,6 @@ class MainActivityTest{
             .check(matches(withText(R.string.text_mainactivity)))
     }
 
-
-
 }
 
 
