@@ -37,6 +37,10 @@ android {
         }
     }
 
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
 }
 
 dependencies {
@@ -51,6 +55,7 @@ dependencies {
     // Espresso
     def androidx_test_espresso = "3.1.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
     androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$androidx_test_espresso"
     implementation "androidx.test.espresso:espresso-idling-resource:$androidx_test_espresso"
 
@@ -60,8 +65,9 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$androidx_test"
     androidTestImplementation "androidx.test:core:$androidx_test"
 //    androidTestImplementation "androidx.test:monitor:$androidx_test"
-//    androidTestImplementation "androidx.test.ext:junit:$androidx_test"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test"
     androidTestImplementation "androidx.test.ext:truth:$androidx_test"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
 
 //    // arch testing
 //    def arch_testing = "2.0.1"
@@ -72,6 +78,8 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-core:$mockito_core"
     def mockito_android = "2.25.0"
     androidTestImplementation "org.mockito:mockito-android:$mockito_android"
+
+    testImplementation "org.mockito:mockito-core:$mockito_core"
 
     def fragment_version = "1.1.0"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
@@ -88,14 +96,3 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.navigation:navigation-runtime:$nav_version"
 }
-
-
-
-
-
-
-
-
-
-
-

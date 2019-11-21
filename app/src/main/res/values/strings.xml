@@ -5,4 +5,7 @@
     <string name="text_next_fragment">Next fragment</string>
     <string name="text_next_activity">Next Activity</string>
     <string name="text_secondary_fragment">This is Secondary Fragment</string>
+    <string name="text_mainactivity">MainActivity</string>
+    <string name="text_back">Back</string>
+    <string name="text_secondaryactivity">SecondaryActivity</string>
 </resources>
