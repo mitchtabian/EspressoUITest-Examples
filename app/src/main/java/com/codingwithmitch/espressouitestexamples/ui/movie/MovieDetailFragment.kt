@@ -9,14 +9,35 @@ import com.bumptech.glide.RequestManager
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
+import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
+import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
+@OpenForTesting
 class MovieDetailFragment
 constructor(
-    val requestManager: RequestManager
+    val requestManager: RequestManager,
+    val moviesRemoteDataSource: MoviesRemoteDataSource
 ): Fragment(){
 
-    private var movie: Movie? = null
+    private lateinit var movie: Movie
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let { args ->
+            args.getInt("movie_id").let{ movieId ->
+                moviesRemoteDataSource.getMovie(movieId)?.let{ movieFromRemote ->
+                    movie = movieFromRemote
+                }
+            }
+        }
+
+        if(!::movie.isInitialized){
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.container, ErrorFragment::class.java, null)
+                ?.commit()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +53,7 @@ constructor(
 
         movie_directiors.setOnClickListener {
             val bundle = Bundle()
-            bundle.putStringArrayList("args_directors", movie?.directors)
+            bundle.putStringArrayList("args_directors", movie.directors)
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.container, DirectorsFragment::class.java, bundle)
                 ?.addToBackStack("DirectorsFragment")
@@ -41,7 +62,7 @@ constructor(
 
         movie_star_actors.setOnClickListener {
             val bundle = Bundle()
-            bundle.putStringArrayList("args_actors", movie?.star_actors)
+            bundle.putStringArrayList("args_actors", movie.star_actors)
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.container, StarActorsFragment::class.java, bundle)
                 ?.addToBackStack("StarActorsFragment")
@@ -49,15 +70,13 @@ constructor(
         }
     }
 
+
     private fun setMovieDetails(){
-        movie = MoviesRemoteDataSource.getMovie(1)
-        movie?.let{nonNullMovie ->
-            requestManager
-                .load(nonNullMovie.image)
-                .into(movie_image)
-            movie_title.text = nonNullMovie.title
-            movie_description.text = nonNullMovie.description
-        }
+        requestManager
+            .load(movie.image)
+            .into(movie_image)
+        movie_title.text = movie.title
+        movie_description.text = movie.description
     }
 
 }

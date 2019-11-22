@@ -2,7 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-allopen'
 
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'com.codingwithmitch.espressouitestexamples.testing.OpenClass'
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -21,6 +26,20 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -35,6 +54,12 @@ dependencies {
     def androidx_test_espresso = "3.1.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
+
+    // Mockito
+    def mockito_core = "2.25.0"
+    implementation "org.mockito:mockito-core:$mockito_core"
+    def mockito_android = "2.25.0"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_android"
 
     // androidx.test
     def androidx_test = "1.1.0"
@@ -53,9 +78,9 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
+    def material_version = "1.1.0-alpha09"
+    implementation "com.google.android.material:material:$material_version"
 }
-
-
 
 
 

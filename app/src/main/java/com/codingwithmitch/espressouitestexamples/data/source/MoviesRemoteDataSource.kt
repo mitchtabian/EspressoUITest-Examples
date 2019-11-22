@@ -1,8 +1,11 @@
 package com.codingwithmitch.espressouitestexamples.data.source
 
 import com.codingwithmitch.espressouitestexamples.data.Movie
+import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 
-object MoviesRemoteDataSource: MoviesDataSource {
+@OpenForTesting
+//object MoviesRemoteDataSource: MoviesDataSource {
+class MoviesRemoteDataSource: MoviesDataSource {
 
     private var MOVIES_REMOTE_DATA = LinkedHashMap<Int, Movie>(2)
 

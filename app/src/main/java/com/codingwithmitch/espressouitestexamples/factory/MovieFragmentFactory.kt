@@ -3,13 +3,18 @@ package com.codingwithmitch.espressouitestexamples.factory
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.bumptech.glide.RequestManager
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
+import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.DirectorsFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.MovieDetailFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
+@OpenForTesting
 class MovieFragmentFactory(
-    private val requestManager: RequestManager
+    private val requestManager: RequestManager,
+    private val moviesRemoteDataSource: MoviesRemoteDataSource
 ) : FragmentFactory(){
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -21,7 +26,10 @@ class MovieFragmentFactory(
         when(fragmentClass){
 
             MovieDetailFragment::class.java -> {
-                fragment = MovieDetailFragment(requestManager)
+                fragment = MovieDetailFragment(
+                    requestManager,
+                    moviesRemoteDataSource
+                )
             }
 
             DirectorsFragment::class.java -> {

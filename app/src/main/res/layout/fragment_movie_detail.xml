@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,96 +7,88 @@
     android:background="#fff"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/movie_image"
+        android:id="@+id/movie_title"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:text="@string/text_movie_title"
+        android:textColor="#000"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/container1"
+        android:id="@+id/movie_image"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/movie_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:id="@+id/container1"
         >
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/movie_image"
-            android:id="@+id/movie_title"
-            android:gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:text="@string/text_movie_title"
-            android:textColor="#000"
-            android:textSize="19sp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:id="@+id/movie_directiors"
+            android:text="@string/text_list_movie_directors"
+            android:textColor="@color/grey5"
+            android:textSize="15sp"
             />
 
-        <ImageView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movie_title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/container1"
-            android:id="@+id/movie_image"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
+            android:id="@+id/movie_star_actors"
+            android:text="@string/text_list_movie_star_actors"
+            android:textColor="@color/grey5"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"
             />
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/movie_image"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:id="@+id/container1"
+            android:layout_height="0.5dp"
+            android:background="@color/grey4"
+            android:layout_marginTop="10dp"
             >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_directiors"
-                android:text="@string/text_list_movie_directors"
-                android:textColor="@color/grey5"
-                android:textSize="15sp"
-                />
+        </View>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_star_actors"
-                android:text="@string/text_list_movie_star_actors"
-                android:textColor="@color/grey5"
-                android:textSize="15sp"
-                android:layout_marginTop="15dp"
-                />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/grey4"
-                android:layout_marginTop="10dp"
-                >
-
-            </View>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_description"
-                android:text="@string/test_movie_description"
-                android:textColor="#000"
-                android:textSize="17sp"
-                android:layout_marginTop="20dp"
-                />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/movie_description"
+            android:text="@string/test_movie_description"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:layout_marginTop="20dp"
+            />
 
 
 
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

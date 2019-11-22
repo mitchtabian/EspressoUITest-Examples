@@ -6,16 +6,22 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.R
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
 import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
 
 class MainActivity : AppCompatActivity() {
 
-    // dependency (typically would be injected with dagger)
+    // dependencies (typically would be injected with dagger)
     lateinit var requestManager: RequestManager
+    lateinit var movieRemoteDataSource: MoviesRemoteDataSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        initGlideInstance()
-        supportFragmentManager.fragmentFactory = MovieFragmentFactory(requestManager)
+        initDependencies()
+        supportFragmentManager.fragmentFactory = MovieFragmentFactory(
+            requestManager,
+            movieRemoteDataSource
+            )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -23,17 +29,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init(){
+        val bundle = Bundle()
+        bundle.putInt("movie_id", 1)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MovieDetailFragment::class.java, null)
+            .replace(R.id.container, MovieDetailFragment::class.java, bundle)
             .commit()
     }
 
-    private fun initGlideInstance(){
+    private fun initDependencies(){
+
+        // glide
         val requestOptions = RequestOptions
             .placeholderOf(R.drawable.default_image)
             .error(R.drawable.default_image)
         requestManager = Glide.with(application)
             .setDefaultRequestOptions(requestOptions)
+
+        // Data Source
+        movieRemoteDataSource = MoviesRemoteDataSource()
     }
 
 }
