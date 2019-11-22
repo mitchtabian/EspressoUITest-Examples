@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_movie_detail.*
 class MovieDetailFragment
 constructor(
     val requestOptions: RequestOptions,
-    val moviesRemoteDataSource: MoviesRemoteDataSource
+    val moviesDataSource: MoviesDataSource
 ): Fragment(){
 
     private lateinit var movie: Movie
@@ -29,7 +29,7 @@ constructor(
         super.onCreate(savedInstanceState)
         arguments?.let { args ->
             args.getInt("movie_id").let{ movieId ->
-                moviesRemoteDataSource.getMovie(movieId)?.let{ movieFromRemote ->
+                moviesDataSource.getMovie(movieId)?.let{ movieFromRemote ->
                     movie = movieFromRemote
                 }
             }

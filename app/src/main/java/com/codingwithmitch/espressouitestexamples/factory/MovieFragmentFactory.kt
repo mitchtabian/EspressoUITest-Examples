@@ -2,9 +2,8 @@ package com.codingwithmitch.espressouitestexamples.factory
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
-import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.DirectorsFragment
@@ -14,7 +13,7 @@ import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 @OpenForTesting
 class MovieFragmentFactory(
     val requestOptions: RequestOptions,
-    val moviesRemoteDataSource: MoviesRemoteDataSource
+    val moviesDataSource: MoviesDataSource
 ) : FragmentFactory(){
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -28,7 +27,7 @@ class MovieFragmentFactory(
             MovieDetailFragment::class.java -> {
                 fragment = MovieDetailFragment(
                     requestOptions,
-                    moviesRemoteDataSource
+                    moviesDataSource
                 )
             }
 

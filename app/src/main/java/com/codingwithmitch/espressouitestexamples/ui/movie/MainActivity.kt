@@ -2,8 +2,6 @@ package com.codingwithmitch.espressouitestexamples.ui.movie
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
@@ -14,13 +12,13 @@ class MainActivity : AppCompatActivity() {
 
     // dependencies (typically would be injected with dagger)
     lateinit var requestOptions: RequestOptions
-    lateinit var movieRemoteDataSource: MoviesRemoteDataSource
+    lateinit var moviesDataSource: MoviesDataSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initDependencies()
         supportFragmentManager.fragmentFactory = MovieFragmentFactory(
             requestOptions,
-            movieRemoteDataSource
+            moviesDataSource
             )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             .error(R.drawable.default_image)
 
         // Data Source
-        movieRemoteDataSource = MoviesRemoteDataSource()
+        moviesDataSource = MoviesRemoteDataSource
     }
 
 }
