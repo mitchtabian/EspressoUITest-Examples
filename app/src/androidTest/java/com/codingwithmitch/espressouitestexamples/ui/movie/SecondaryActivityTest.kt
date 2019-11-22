@@ -1,4 +1,4 @@
-package com.codingwithmitch.espressouitestexamples.ui.main
+package com.codingwithmitch.espressouitestexamples.ui.movie
 
 import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.Espresso.*

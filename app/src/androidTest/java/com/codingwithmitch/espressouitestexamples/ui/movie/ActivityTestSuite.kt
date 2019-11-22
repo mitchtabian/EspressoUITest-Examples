@@ -1,4 +1,4 @@
-package com.codingwithmitch.espressouitestexamples.ui.main
+package com.codingwithmitch.espressouitestexamples.ui.movie
 
 import org.junit.runner.RunWith
 import org.junit.runners.Suite

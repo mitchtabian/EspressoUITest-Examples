@@ -1,4 +1,4 @@
-package com.codingwithmitch.espressouitestexamples.ui.main
+package com.codingwithmitch.espressouitestexamples.ui.movie
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView

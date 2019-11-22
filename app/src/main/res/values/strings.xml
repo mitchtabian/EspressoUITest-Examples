@@ -8,4 +8,11 @@
     <string name="text_mainactivity">MainActivity</string>
     <string name="text_back">Back</string>
     <string name="text_secondaryactivity">SecondaryActivity</string>
+    <string name="text_oops">Oops!</string>
+    <string name="text_movie_title">Movie Title</string>
+    <string name="test_movie_description">This is a description of the movie.</string>
+    <string name="text_list_movie_directors">Directors</string>
+    <string name="text_list_movie_star_actors">Star Actors</string>
+    <string name="text_directors">Directors:</string>
+    <string name="text_star_actors">Star Actors:</string>
 </resources>

@@ -5,28 +5,17 @@
     android:layout_height="match_parent"
     android:id="@+id/main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:id="@+id/activity_main_title"
-        android:text="@string/text_mainactivity"
-        android:textSize="25sp"
-        android:textColor="#000"
-        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/container"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_next_activity"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_title"
-        android:layout_marginTop="50dp"
-        android:text="@string/text_next"
-        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
