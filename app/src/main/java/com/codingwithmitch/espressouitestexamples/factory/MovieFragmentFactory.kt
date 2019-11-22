@@ -12,8 +12,8 @@ import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
 @OpenForTesting
 class MovieFragmentFactory(
-    val requestOptions: RequestOptions,
-    val moviesDataSource: MoviesDataSource
+    private val requestOptions: RequestOptions? = null,
+    private val moviesDataSource: MoviesDataSource? = null
 ) : FragmentFactory(){
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -25,10 +25,13 @@ class MovieFragmentFactory(
         when(fragmentClass){
 
             MovieDetailFragment::class.java -> {
-                fragment = MovieDetailFragment(
-                    requestOptions,
-                    moviesDataSource
-                )
+                if(requestOptions != null
+                    && moviesDataSource != null){
+                    fragment = MovieDetailFragment(
+                        requestOptions,
+                        moviesDataSource
+                    )
+                }
             }
 
             DirectorsFragment::class.java -> {

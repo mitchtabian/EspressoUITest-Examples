@@ -21,7 +21,7 @@ import org.mockito.Mockito.*
 class MovieDetailFragmentTest{
 
     @Test
-    fun testDetailFragment_isMovieDataVisible() {
+    fun test_isMovieDataVisible() {
 
         // SETUP
         val movieId = 1
