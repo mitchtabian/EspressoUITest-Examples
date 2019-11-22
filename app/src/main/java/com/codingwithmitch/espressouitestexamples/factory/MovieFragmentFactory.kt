@@ -13,8 +13,8 @@ import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
 @OpenForTesting
 class MovieFragmentFactory(
-    private val requestManager: RequestManager,
-    private val moviesRemoteDataSource: MoviesRemoteDataSource
+    val requestManager: RequestManager,
+    val moviesRemoteDataSource: MoviesRemoteDataSource
 ) : FragmentFactory(){
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
