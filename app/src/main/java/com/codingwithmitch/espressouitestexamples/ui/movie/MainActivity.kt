@@ -13,13 +13,13 @@ import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
 class MainActivity : AppCompatActivity() {
 
     // dependencies (typically would be injected with dagger)
-    lateinit var requestManager: RequestManager
+    lateinit var requestOptions: RequestOptions
     lateinit var movieRemoteDataSource: MoviesRemoteDataSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initDependencies()
         supportFragmentManager.fragmentFactory = MovieFragmentFactory(
-            requestManager,
+            requestOptions,
             movieRemoteDataSource
             )
         super.onCreate(savedInstanceState)
@@ -39,11 +39,9 @@ class MainActivity : AppCompatActivity() {
     private fun initDependencies(){
 
         // glide
-        val requestOptions = RequestOptions
+        requestOptions = RequestOptions
             .placeholderOf(R.drawable.default_image)
             .error(R.drawable.default_image)
-        requestManager = Glide.with(application)
-            .setDefaultRequestOptions(requestOptions)
 
         // Data Source
         movieRemoteDataSource = MoviesRemoteDataSource()

@@ -3,6 +3,7 @@ package com.codingwithmitch.espressouitestexamples.factory
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
@@ -12,7 +13,7 @@ import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
 @OpenForTesting
 class MovieFragmentFactory(
-    val requestManager: RequestManager,
+    val requestOptions: RequestOptions,
     val moviesRemoteDataSource: MoviesRemoteDataSource
 ) : FragmentFactory(){
 
@@ -26,7 +27,7 @@ class MovieFragmentFactory(
 
             MovieDetailFragment::class.java -> {
                 fragment = MovieDetailFragment(
-                    requestManager,
+                    requestOptions,
                     moviesRemoteDataSource
                 )
             }

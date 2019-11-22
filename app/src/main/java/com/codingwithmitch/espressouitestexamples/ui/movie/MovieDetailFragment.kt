@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
@@ -17,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_movie_detail.*
 @OpenForTesting
 class MovieDetailFragment
 constructor(
-    val requestManager: RequestManager,
+    val requestOptions: RequestOptions,
     val moviesRemoteDataSource: MoviesRemoteDataSource
 ): Fragment(){
 
@@ -72,15 +74,12 @@ constructor(
     }
 
     private fun setMovieDetails(){
-        setMovieImage()
-        movie_title.text = movie.title
-        movie_description.text = movie.description
-    }
-
-    fun setMovieImage(){
-        requestManager
+        Glide.with(this)
+            .applyDefaultRequestOptions(requestOptions)
             .load(movie.image)
             .into(movie_image)
+        movie_title.text = movie.title
+        movie_description.text = movie.description
     }
 
 }
