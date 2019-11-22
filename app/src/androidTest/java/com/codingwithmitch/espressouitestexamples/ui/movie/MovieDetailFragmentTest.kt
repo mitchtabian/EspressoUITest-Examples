@@ -19,7 +19,7 @@ class MovieDetailFragmentTest{
 
 
     @Test
-    fun test_isMovieDataVisible() {
+    fun test_navToDetailFragment() {
 
         // SETUP
         val movieId = 1

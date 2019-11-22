@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
+    android:id="@+id/fragment_movie_detail_parent"
     >
 
     <TextView
@@ -49,7 +50,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/movie_directiors"
+            android:id="@+id/movie_directors"
             android:text="@string/text_list_movie_directors"
             android:textColor="@color/grey5"
             android:textSize="15sp"

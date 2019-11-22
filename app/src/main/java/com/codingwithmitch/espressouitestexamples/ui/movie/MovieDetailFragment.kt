@@ -53,7 +53,7 @@ class MovieDetailFragment : Fragment(){
 
         setMovieDetails()
 
-        movie_directiors.setOnClickListener {
+        movie_directors.setOnClickListener {
             val bundle = Bundle()
             bundle.putStringArrayList("args_directors", movie.directors)
             activity?.supportFragmentManager?.beginTransaction()
