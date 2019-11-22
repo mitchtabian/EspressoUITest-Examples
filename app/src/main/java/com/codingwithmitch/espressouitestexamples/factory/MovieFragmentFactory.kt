@@ -8,9 +8,7 @@ import com.codingwithmitch.espressouitestexamples.ui.movie.DirectorsFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.MovieDetailFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
-class MovieFragmentFactory(
-    private val requestManager: RequestManager
-) : FragmentFactory(){
+class MovieFragmentFactory : FragmentFactory(){
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
 
@@ -21,7 +19,7 @@ class MovieFragmentFactory(
         when(fragmentClass){
 
             MovieDetailFragment::class.java -> {
-                fragment = MovieDetailFragment(requestManager)
+                fragment = MovieDetailFragment()
             }
 
             DirectorsFragment::class.java -> {
