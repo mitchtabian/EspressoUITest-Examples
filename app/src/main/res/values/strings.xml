@@ -15,4 +15,5 @@
     <string name="text_list_movie_star_actors">Star Actors</string>
     <string name="text_directors">Directors:</string>
     <string name="text_star_actors">Star Actors:</string>
+    <string name="text_select_image_from_gallery">Select an image from gallery</string>
 </resources>
