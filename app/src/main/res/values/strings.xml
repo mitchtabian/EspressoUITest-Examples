@@ -21,4 +21,6 @@
     <string name="text_title_of_dialog">Title of Dialog</string>
     <string name="text_some_information">This dialog is displaying some information.</string>
     <string name="text_ok">Ok</string>
+    <string name="text_capture_input">Enter your name</string>
+    <string name="text_enter_name">Enter your name</string>
 </resources>
