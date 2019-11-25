@@ -8,6 +8,7 @@ import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.DirectorsFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.MovieDetailFragment
+import com.codingwithmitch.espressouitestexamples.ui.movie.MovieListFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
 @OpenForTesting
@@ -23,6 +24,10 @@ class MovieFragmentFactory(
         var errorDescription: String? = null
 
         when(fragmentClass){
+
+            MovieListFragment::class.java -> {
+                fragment = MovieListFragment()
+            }
 
             MovieDetailFragment::class.java -> {
                 if(requestOptions != null
