@@ -4,6 +4,7 @@ import android.os.IBinder
 
 import android.view.WindowManager
 import androidx.test.espresso.Root
+import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 
 /**
@@ -11,7 +12,7 @@ import org.hamcrest.TypeSafeMatcher
  */
 class ToastMatcher : TypeSafeMatcher<Root?>() {
 
-    override fun describeTo(description: org.hamcrest.Description?) {
+    override fun describeTo(description: Description?) {
         description?.appendText("is toast")
     }
 
