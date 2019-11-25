@@ -1,5 +1,6 @@
 package com.codingwithmitch.espressouitestexamples.data.source
 
+import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 
@@ -12,6 +13,10 @@ object MoviesRemoteDataSource: MoviesDataSource {
         for (movie in FakeMovieData.movies){
             addMovie(movie)
         }
+    }
+
+    override fun getMovies(): List<Movie> {
+        return ArrayList(MOVIES_REMOTE_DATA.values)
     }
 
     override fun getMovie(movieId: Int): Movie? {

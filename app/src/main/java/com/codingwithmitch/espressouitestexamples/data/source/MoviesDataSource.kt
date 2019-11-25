@@ -7,4 +7,6 @@ import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 interface MoviesDataSource {
 
     fun getMovie(movieId: Int): Movie?
+
+    fun getMovies(): List<Movie>
 }

@@ -11,7 +11,6 @@ import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
-import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 
@@ -21,6 +20,8 @@ constructor(
     val requestOptions: RequestOptions,
     val moviesDataSource: MoviesDataSource
 ): Fragment(){
+
+    private val TAG: String = "AppDebug"
 
     private lateinit var movie: Movie
 
@@ -32,12 +33,6 @@ constructor(
                     movie = movieFromRemote
                 }
             }
-        }
-
-        if(!::movie.isInitialized){
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.container, ErrorFragment::class.java, null)
-                ?.commit()
         }
     }
 
@@ -73,7 +68,7 @@ constructor(
     }
 
     private fun setMovieDetails(){
-        Glide.with(this)
+        Glide.with(this@MovieDetailFragment)
             .applyDefaultRequestOptions(requestOptions)
             .load(movie.image)
             .into(movie_image)

@@ -27,22 +27,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init(){
-        val bundle = Bundle()
-        bundle.putInt("movie_id", 1)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MovieListFragment::class.java, bundle)
-            .commit()
+        if(supportFragmentManager.fragments.size == 0){
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, MovieListFragment::class.java, null)
+                .commit()
+        }
     }
 
     private fun initDependencies(){
-
-        // glide
-        requestOptions = RequestOptions
-            .placeholderOf(R.drawable.default_image)
-            .error(R.drawable.default_image)
-
-        // Data Source
-        moviesDataSource = MoviesRemoteDataSource
+        if(!::requestOptions.isInitialized){
+            // glide
+            requestOptions = RequestOptions
+                .placeholderOf(R.drawable.default_image)
+                .error(R.drawable.default_image)
+        }
+        if(!::moviesDataSource.isInitialized){
+            // Data Source
+            moviesDataSource = MoviesRemoteDataSource
+        }
     }
 
 }

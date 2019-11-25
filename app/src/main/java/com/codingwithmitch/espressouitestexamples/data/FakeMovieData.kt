@@ -1,4 +1,4 @@
-package com.codingwithmitch.espressouitestexamples.data.source
+package com.codingwithmitch.espressouitestexamples.data
 
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.codingwithmitch.espressouitestexamples.R
-import com.codingwithmitch.espressouitestexamples.ui.ErrorFragment
 import kotlinx.android.synthetic.main.fragment_star_actors.*
 
 class StarActorsFragment : Fragment(){
@@ -17,9 +16,7 @@ class StarActorsFragment : Fragment(){
         super.onCreate(savedInstanceState)
         arguments?.let { args ->
             starActors.addAll(args.get("args_actors") as List<String>)
-        }?:activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.container, ErrorFragment::class.java, null)
-            ?.commit()
+        }
     }
 
     override fun onCreateView(
