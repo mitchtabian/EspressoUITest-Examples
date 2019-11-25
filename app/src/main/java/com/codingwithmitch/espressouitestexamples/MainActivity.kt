@@ -1,18 +1,10 @@
 package com.codingwithmitch.espressouitestexamples
 
-import android.app.Activity
-import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
+import com.afollestad.materialdialogs.MaterialDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-const val REQUEST_IMAGE_CAPTURE = 1234
-const val KEY_IMAGE_DATA = "data"
 
 class MainActivity : AppCompatActivity(){
 
@@ -23,34 +15,34 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button_launch_camera.setOnClickListener {
-            dispatchCameraIntent()
+        button_launch_dialog.setOnClickListener {
+            showDialog()
         }
+
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
-            Log.d(TAG, "RESULT_OK")
-            when(requestCode){
-
-                REQUEST_IMAGE_CAPTURE -> {
-                    Log.d(TAG, "REQUEST_IMAGE_CAPTURE detected.")
-                    data?.extras.let{ extras ->
-                        if (extras == null || !extras.containsKey(KEY_IMAGE_DATA)) {
-                            return
-                        }
-                        val imageBitmap = extras[KEY_IMAGE_DATA] as Bitmap?
-                        image.setImageBitmap(imageBitmap)
-                    }
-                }
+    private fun showDialog(){
+        MaterialDialog(this)
+            .show {
+                title(R.string.text_title_of_dialog)
+                message(R.string.text_some_information)
+                positiveButton(R.string.text_ok)
             }
-        }
-    }
-
-    private fun dispatchCameraIntent() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
