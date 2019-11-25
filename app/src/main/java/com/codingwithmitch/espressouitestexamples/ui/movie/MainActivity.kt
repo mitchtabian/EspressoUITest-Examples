@@ -16,12 +16,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init(){
-        val movieId = 1
-        val bundle = Bundle()
-        bundle.putInt("movie_id", movieId)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MovieDetailFragment::class.java, bundle)
-            .commit()
+        if(supportFragmentManager.fragments.size == 0){
+            val movieId = 1
+            val bundle = Bundle()
+            bundle.putInt("movie_id", movieId)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, MovieDetailFragment::class.java, bundle)
+                .commit()
+        }
     }
 
 }
