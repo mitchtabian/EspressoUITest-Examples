@@ -1,4 +1,5 @@
 # This is a work in progress.
+#### Course will be published on codingwithmitch.com
 
 ### Espresso Samples:
 #### [Activities in Isolation](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-activity)
