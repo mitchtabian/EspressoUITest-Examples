@@ -41,7 +41,7 @@ object FakeMovieData {
             "https://nyc3.digitaloceanspaces.com/open-api-spaces/open-api-static/blog/1/The_Dark_Knight-fragment_factory_1.png",
             "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
             arrayListOf("Christopher Nolan"),
-            arrayListOf("Christian Bale", "Heath Ledger", "Aaron Eckhart ")
+            arrayListOf("Christian Bale", "Heath Ledger", "Aaron Eckhart")
         ),
         Movie(
             4,

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.codingwithmitch.espressouitestexamples.R
 import kotlinx.android.synthetic.main.fragment_star_actors.*
+import java.lang.StringBuilder
 
 class StarActorsFragment : Fragment(){
 
@@ -34,10 +35,19 @@ class StarActorsFragment : Fragment(){
     }
 
     private fun setActors(){
-        for(actor in starActors){
-            star_actors_text.append(actor + "\n")
+        star_actors_text.text = stringBuilderForStarActors(starActors)
+    }
+
+    companion object{
+        fun stringBuilderForStarActors(actors: ArrayList<String>): String{
+            val sb = StringBuilder()
+            for(actor in actors){
+                sb.append(actor + "\n")
+            }
+            return sb.toString()
         }
     }
+
 }
 
 
