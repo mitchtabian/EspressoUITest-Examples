@@ -28,10 +28,6 @@ class StarActorsFragmentTest{
             "Rosario Dawson",
             "Christopher Walken"
         )
-        val verifyActorsValue: StringBuilder = StringBuilder()
-        for(director in actors){
-            verifyActorsValue.append(director + "\n")
-        }
         val fragmentFactory = MovieFragmentFactory()
         val bundle = Bundle()
         bundle.putStringArrayList("args_actors", actors)
@@ -42,7 +38,9 @@ class StarActorsFragmentTest{
 
         // VERIFY
         onView(withId(R.id.star_actors_text))
-            .check(matches(withText(verifyActorsValue.toString())))
+            .check(matches(withText(
+                StarActorsFragment.stringBuilderForStarActors(actors)
+            )))
     }
 }
 

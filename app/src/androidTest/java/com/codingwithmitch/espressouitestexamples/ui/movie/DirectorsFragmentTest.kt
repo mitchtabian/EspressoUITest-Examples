@@ -21,10 +21,6 @@ class DirectorsFragmentTest{
 
         // GIVEN
         val directors = arrayListOf("R.J. Stewart", "James Vanderbilt")
-        val verifyDirectorsValue: StringBuilder = StringBuilder()
-        for(director in directors){
-            verifyDirectorsValue.append(director + "\n")
-        }
         val fragmentFactory = MovieFragmentFactory()
         val bundle = Bundle()
         bundle.putStringArrayList("args_directors", directors)
@@ -35,6 +31,8 @@ class DirectorsFragmentTest{
 
         // VERIFY
         onView(withId(R.id.directors_text))
-            .check(matches(withText(verifyDirectorsValue.toString())))
+            .check(matches(withText(
+                DirectorsFragment.stringBuilderForDirectors(directors)
+            )))
     }
 }
