@@ -35,8 +35,16 @@ class DirectorsFragment : Fragment(){
     }
 
     private fun setDirectors(){
-        for(director in directors){
-            directors_text.append(director + "\n")
+        directors_text.text = stringBuilderForDirectors(directors)
+    }
+
+    companion object{
+        fun stringBuilderForDirectors(directors: ArrayList<String>): String{
+            val sb = StringBuilder()
+            for(director in directors){
+                sb.append(director + "\n")
+            }
+            return sb.toString()
         }
     }
 }

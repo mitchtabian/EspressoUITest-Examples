@@ -34,8 +34,16 @@ class StarActorsFragment : Fragment(){
     }
 
     private fun setActors(){
-        for(actor in starActors){
-            star_actors_text.append(actor + "\n")
+        star_actors_text.text = stringBuilderForStarActors(starActors)
+    }
+
+    companion object{
+        fun stringBuilderForStarActors(actors: ArrayList<String>): String{
+            val sb = StringBuilder()
+            for(actor in actors){
+                sb.append(actor + "\n")
+            }
+            return sb.toString()
         }
     }
 }
