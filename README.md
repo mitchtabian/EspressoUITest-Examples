@@ -1,7 +1,4 @@
-# EspressoUITest-Examples
-Examples of UI Testing with Espresso, Mockito, androidx.test
-
-## This is a work in progress.
+# This is a work in progress.
 
 ### Espresso Samples:
 #### [Activities in Isolation](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-activity)
@@ -14,3 +11,5 @@ Examples of UI Testing with Espresso, Mockito, androidx.test
 #### [Intents (image from camera)](https://github.com/mitchtabian/EspressoUITest-Examples/tree/intents-camera-example)
 #### [Dialog (detecting if visible)](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-dialog)
 #### [Dialog (capture input)](https://github.com/mitchtabian/EspressoUITest-Examples/tree/dialog-capture-input)
+#### [Toasts (custom Toast Matcher)](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-toast)
+#### [RecyclerView](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-recyclerview)
