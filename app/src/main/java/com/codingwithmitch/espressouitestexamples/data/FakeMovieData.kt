@@ -6,6 +6,8 @@ import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 @OpenForTesting
 object FakeMovieData {
 
+    const val FAKE_NETWORK_DELAY = 2000L
+
     val movies = arrayOf(
         Movie(
             0,

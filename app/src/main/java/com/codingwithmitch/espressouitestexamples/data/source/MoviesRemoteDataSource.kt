@@ -3,6 +3,8 @@ package com.codingwithmitch.espressouitestexamples.data.source
 import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 
 @OpenForTesting
 object MoviesRemoteDataSource: MoviesDataSource {

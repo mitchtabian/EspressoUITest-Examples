@@ -1,22 +1,36 @@
 package com.codingwithmitch.espressouitestexamples.ui.movie
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codingwithmitch.espressouitestexamples.R
+import com.codingwithmitch.espressouitestexamples.data.FakeMovieData.FAKE_NETWORK_DELAY
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
+import com.codingwithmitch.espressouitestexamples.ui.UICommunicationListener
+import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
 import com.codingwithmitch.espressouitestexamples.util.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_movie_list.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.ClassCastException
 
 class MovieListFragment(
     val moviesDataSource: MoviesDataSource
 ) : Fragment(),
     MoviesListAdapter.Interaction
 {
+    private val TAG: String = "AppDebug"
+
     override fun onItemSelected(position: Int, item: Movie) {
         activity?.run {
             val bundle = Bundle()
@@ -29,6 +43,7 @@ class MovieListFragment(
     }
 
     lateinit var listAdapter: MoviesListAdapter
+    lateinit var uiCommunicationListener: UICommunicationListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +61,19 @@ class MovieListFragment(
     }
 
     private fun getData(){
-        listAdapter.submitList(moviesDataSource.getMovies())
+
+//        CoroutineScope(Main).launch{
+            EspressoIdlingResource.increment()
+            uiCommunicationListener.loading(true)
+
+//            withContext(IO){
+//                delay(1)
+//            }
+
+            listAdapter.submitList(moviesDataSource.getMovies())
+            uiCommunicationListener.loading(false)
+            EspressoIdlingResource.decrement()
+//        }
     }
 
     private fun initRecyclerView() {
@@ -59,7 +86,14 @@ class MovieListFragment(
         }
     }
 
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try{
+            uiCommunicationListener = context as UICommunicationListener
+        }catch (e: ClassCastException){
+            Log.e(TAG, "Must implement interface in $activity: ${e.message}")
+        }
+    }
 }
 
 
