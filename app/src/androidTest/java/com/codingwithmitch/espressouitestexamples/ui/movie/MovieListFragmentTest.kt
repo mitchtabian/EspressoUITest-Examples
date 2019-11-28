@@ -37,6 +37,21 @@ class MovieListFragmentTest{
     }
 
     @Test
+    fun test_recreateActivity() {
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
+
+        activityScenario.recreate()
+
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
     fun test_isListFragmentVisible_onAppLaunch() {
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
