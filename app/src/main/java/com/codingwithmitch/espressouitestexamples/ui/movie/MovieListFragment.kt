@@ -16,12 +16,9 @@ import com.codingwithmitch.espressouitestexamples.ui.UICommunicationListener
 import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
 import com.codingwithmitch.espressouitestexamples.util.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_movie_list.*
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.lang.ClassCastException
 
 class MovieListFragment(
@@ -63,10 +60,16 @@ class MovieListFragment(
     private fun getData(){
         EspressoIdlingResource.increment()
         uiCommunicationListener.loading(true)
-
-        listAdapter.submitList(moviesDataSource.getMovies())
-        uiCommunicationListener.loading(false)
-        EspressoIdlingResource.decrement()
+        val job = GlobalScope.launch(IO) {
+            delay(FAKE_NETWORK_DELAY)
+        }
+        job.invokeOnCompletion{
+            GlobalScope.launch(Main){
+                EspressoIdlingResource.decrement()
+                uiCommunicationListener.loading(false)
+                listAdapter.submitList(moviesDataSource.getMovies())
+            }
+        }
     }
 
     private fun initRecyclerView() {

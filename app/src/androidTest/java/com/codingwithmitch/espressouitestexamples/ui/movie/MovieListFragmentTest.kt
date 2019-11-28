@@ -2,29 +2,26 @@ package com.codingwithmitch.espressouitestexamples.ui.movie
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.contrib.RecyclerViewActions.*
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
 import com.codingwithmitch.espressouitestexamples.ui.movie.MoviesListAdapter.*
 import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
-import org.hamcrest.CoreMatchers.not
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieListFragmentTest{
 
-    val LIST_ITEM_IN_TEST = 3
+    val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
 
     @Before
@@ -80,10 +77,17 @@ class MovieListFragmentTest{
 
     @Test
     fun test_navDirectorsFragment_validateDirectorsList() {
+
         // GIVEN
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
-        // Click list item #LIST_ITEM_IN_TEST
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
+
+        // Scroll to list item and click
+        onView(withId(R.id.recycler_view)).perform(scrollToPosition<MovieViewHolder>(LIST_ITEM_IN_TEST))
+
+        Thread.sleep(1000)
+
         onView(withId(R.id.recycler_view))
             .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
 

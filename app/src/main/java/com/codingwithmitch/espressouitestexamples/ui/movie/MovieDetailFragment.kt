@@ -11,6 +11,7 @@ import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
 import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
+import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 
