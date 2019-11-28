@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieListFragmentTest{
 
-    val LIST_ITEM_IN_TEST = 3
+    val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
 
     @Test
@@ -54,6 +54,9 @@ class MovieListFragmentTest{
         onView(withId(R.id.recycler_view))
             .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
 
+        // wait for scroll
+        Thread.sleep(500)
+
         // Confirm nav to DetailFragment and display title
         onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
 
@@ -71,6 +74,9 @@ class MovieListFragmentTest{
         // Click list item #LIST_ITEM_IN_TEST
         onView(withId(R.id.recycler_view))
             .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
+
+        // wait for scroll
+        Thread.sleep(500)
 
         // Confirm nav to DetailFragment and display title
         onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
@@ -93,6 +99,9 @@ class MovieListFragmentTest{
         // Click list item #LIST_ITEM_IN_TEST
         onView(withId(R.id.recycler_view))
             .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
+
+        // wait for scroll
+        Thread.sleep(500)
 
         // Confirm nav to DetailFragment and display title
         onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
