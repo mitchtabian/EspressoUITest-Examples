@@ -2,6 +2,7 @@ package com.codingwithmitch.espressouitestexamples.ui.movie
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -12,6 +13,7 @@ import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
 import com.codingwithmitch.espressouitestexamples.ui.movie.MoviesListAdapter.*
 import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
+import org.hamcrest.CoreMatchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -34,46 +36,46 @@ class MovieListFragmentTest{
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
-//    @Test
-//    fun test_isListFragmentVisible_onAppLaunch() {
-//        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-//
-//        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
-//
-//        onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
-//    }
-//
-//    @Test
-//    fun test_selectListItem_isDetailFragmentVisible() {
-//
-//        // GIVEN
-//        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-//
-//        // Click list item #LIST_ITEM_IN_TEST
-//        onView(withId(R.id.recycler_view))
-//            .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
-//
-//        // Confirm nav to DetailFragment and display title
-//        onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
-//    }
-//
-//    @Test
-//    fun test_backNavigation_toMovieListFragment() {
-//        // GIVEN
-//        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-//
-//        // Click list item #LIST_ITEM_IN_TEST
-//        onView(withId(R.id.recycler_view))
-//            .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
-//
-//        // Confirm nav to DetailFragment and display title
-//        onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
-//
-//        pressBack()
-//
-//        // Confirm MovieListFragment in view
-//        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
-//    }
+    @Test
+    fun test_isListFragmentVisible_onAppLaunch() {
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun test_selectListItem_isDetailFragmentVisible() {
+
+        // GIVEN
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        // Click list item #LIST_ITEM_IN_TEST
+        onView(withId(R.id.recycler_view))
+            .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
+
+        // Confirm nav to DetailFragment and display title
+        onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
+    }
+
+    @Test
+    fun test_backNavigation_toMovieListFragment() {
+        // GIVEN
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        // Click list item #LIST_ITEM_IN_TEST
+        onView(withId(R.id.recycler_view))
+            .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
+
+        // Confirm nav to DetailFragment and display title
+        onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
+
+        pressBack()
+
+        // Confirm MovieListFragment in view
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
+    }
 
     @Test
     fun test_navDirectorsFragment_validateDirectorsList() {
@@ -104,27 +106,27 @@ class MovieListFragmentTest{
             )))
     }
 
-//    @Test
-//    fun test_navStarActorsFragment_validateActorsList() {
-//        // GIVEN
-//        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-//
-//        // Click list item #LIST_ITEM_IN_TEST
-//        onView(withId(R.id.recycler_view))
-//            .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
-//
-//        // Confirm nav to DetailFragment and display title
-//        onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
-//
-//        // Nav to DirectorsFragment
-//        onView(withId(R.id.movie_star_actors)).perform(click())
-//
-//        // Confirm correct directors are visible
-//        onView(withId(R.id.star_actors_text))
-//            .check(matches(withText(
-//                StarActorsFragment.stringBuilderForStarActors(MOVIE_IN_TEST.star_actors!!)
-//            )))
-//    }
+    @Test
+    fun test_navStarActorsFragment_validateActorsList() {
+        // GIVEN
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        // Click list item #LIST_ITEM_IN_TEST
+        onView(withId(R.id.recycler_view))
+            .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
+
+        // Confirm nav to DetailFragment and display title
+        onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
+
+        // Nav to DirectorsFragment
+        onView(withId(R.id.movie_star_actors)).perform(click())
+
+        // Confirm correct directors are visible
+        onView(withId(R.id.star_actors_text))
+            .check(matches(withText(
+                StarActorsFragment.stringBuilderForStarActors(MOVIE_IN_TEST.star_actors!!)
+            )))
+    }
 
 
 }
