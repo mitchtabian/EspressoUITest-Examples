@@ -61,19 +61,12 @@ class MovieListFragment(
     }
 
     private fun getData(){
+        EspressoIdlingResource.increment()
+        uiCommunicationListener.loading(true)
 
-//        CoroutineScope(Main).launch{
-            EspressoIdlingResource.increment()
-            uiCommunicationListener.loading(true)
-
-//            withContext(IO){
-//                delay(1)
-//            }
-
-            listAdapter.submitList(moviesDataSource.getMovies())
-            uiCommunicationListener.loading(false)
-            EspressoIdlingResource.decrement()
-//        }
+        listAdapter.submitList(moviesDataSource.getMovies())
+        uiCommunicationListener.loading(false)
+        EspressoIdlingResource.decrement()
     }
 
     private fun initRecyclerView() {
