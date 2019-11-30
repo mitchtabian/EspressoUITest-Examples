@@ -1,5 +1,7 @@
-# This is a work in progress.
-#### Course will be published on codingwithmitch.com
+![UI Testing for Beginners](https://codingwithmitch.s3.amazonaws.com/static/ui-testing-for-beginners/images/UI_Testing_with_Espresso_and_androidx.test.png "UI Testing with Espresso and androidx.test")
+
+# [UI Testing for Beginners](https://codingwithmitch.com/courses/ui-testing-for-beginners/)
+Watch the video course here: [UI Testing for Beginners](https://codingwithmitch.com/courses/ui-testing-for-beginners/)
 
 ### Espresso Samples:
 #### [Activities in Isolation](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-activity)
