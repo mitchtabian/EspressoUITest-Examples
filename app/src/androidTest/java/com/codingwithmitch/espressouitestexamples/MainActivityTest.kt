@@ -48,7 +48,8 @@ class MainActivityTest{
         val bundle = Bundle()
         bundle.putParcelable(
             KEY_IMAGE_DATA, BitmapFactory.decodeResource(
-                intentsTestRule.getActivity().getResources(), R.drawable.ic_launcher_background
+                intentsTestRule.getActivity().getResources(),
+                R.drawable.ic_launcher_background
             )
         )
         val resultData = Intent()
