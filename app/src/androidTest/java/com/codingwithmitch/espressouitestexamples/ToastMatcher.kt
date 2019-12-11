@@ -21,7 +21,7 @@ class ToastMatcher : TypeSafeMatcher<Root?>() {
         if (type == WindowManager.LayoutParams.TYPE_TOAST) {
             val windowToken: IBinder = item.getDecorView().getWindowToken()
             val appToken: IBinder = item.getDecorView().getApplicationWindowToken()
-            if (windowToken === appToken) { //means this window isn't contained by any other windows.
+            if (windowToken === appToken) { // means this window isn't contained by any other windows.
                 return true
             }
         }
