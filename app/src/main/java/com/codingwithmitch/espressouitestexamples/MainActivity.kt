@@ -24,10 +24,7 @@ class MainActivity : AppCompatActivity(){
             .placeholder(R.drawable.default_image)
             .error(R.drawable.default_image)
         supportFragmentManager.fragmentFactory = MainFragmentFactory(
-            ProductionImageLoader(
-                this,
-                requestOptions
-            )
+            ProductionImageLoader(this, requestOptions)
         )
     }
 

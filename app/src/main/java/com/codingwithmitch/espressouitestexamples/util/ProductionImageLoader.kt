@@ -17,18 +17,22 @@ class ProductionImageLoader(
         .applyDefaultRequestOptions(requestOptions)
 
     override fun loadBitmap(bitmap: Bitmap, imageView: ImageView) {
-        requestManager
-            .load(bitmap)
-            .into(imageView)
+        loadImage(bitmap, imageView)
     }
 
     override fun loadDrawable(drawable: Drawable, imageView: ImageView) {
-        requestManager
-            .load(drawable)
-            .into(imageView)
+        loadImage(drawable, imageView)
     }
 
+    override fun loadImageUrl(url: String, imageView: ImageView) {
+        loadImage(url, imageView)
+    }
 
+    private fun loadImage(resource: Any, imageView: ImageView){
+        requestManager
+            .load(resource)
+            .into(imageView)
+    }
 }
 
 

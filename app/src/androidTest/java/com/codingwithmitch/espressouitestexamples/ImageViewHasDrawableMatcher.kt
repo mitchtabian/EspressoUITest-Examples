@@ -39,7 +39,7 @@ object ImageViewHasDrawableMatcher {
                             expectedDrawable
                         )
                         val actualBitmap = getBitmap(itemView.drawable)
-                        actualBitmap.sameAs(expectedBitmap)
+                        return actualBitmap.sameAs(expectedBitmap)
                     }
                 }
                 return false

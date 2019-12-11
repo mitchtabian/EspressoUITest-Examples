@@ -14,6 +14,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.intent.Intents.*
 import androidx.test.espresso.intent.matcher.IntentMatchers
@@ -124,6 +125,28 @@ class MainFragmentTest{
                 R.drawable.ic_launcher_background
             )
         ))
+    }
+
+    /**
+     * Can't test actually setting the image from network, so we just see if the url is
+     * set in the TestImageLoader.
+     */
+    @Test
+    fun test_networkImageUrlsRetrieved() {
+
+        // GIVEN
+        val testImageLoader = TestImageLoader()
+        val fragmentFactory = MainFragmentFactory(
+            imageLoader = testImageLoader
+        )
+        val fragmentScenario = launchFragmentInContainer<MainFragment>(
+            fragmentArgs = null,
+            factory = fragmentFactory
+        )
+
+        onView(withId(R.id.button_set_network_image)).perform(click())
+
+        assert(testImageLoader.imageUrl.equals(NETWORK_IMAGE_URL))
     }
 
     private fun createImageCaptureActivityResultStub(context: Context): Instrumentation.ActivityResult? {

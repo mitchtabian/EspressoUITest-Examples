@@ -16,6 +16,11 @@ interface ImageLoader {
         imageView: ImageView
     )
 
+    fun loadImageUrl(
+        url: String,
+        imageView: ImageView
+    )
+
 }
 
 

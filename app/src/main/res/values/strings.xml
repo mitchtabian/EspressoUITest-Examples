@@ -17,5 +17,6 @@
     <string name="text_star_actors">Star Actors:</string>
     <string name="text_select_image_from_gallery">Select an image from gallery</string>
     <string name="text_launch_camera">Launch camera</string>
+    <string name="set_network_image">Set network image</string>
 
 </resources>

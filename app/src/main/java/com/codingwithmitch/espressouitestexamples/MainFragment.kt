@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 const val REQUEST_IMAGE_CAPTURE = 1234
 const val KEY_IMAGE_DATA = "data"
+const val  NETWORK_IMAGE_URL = "https://cdn.open-api.xyz/open-api-static/static-blog-images/image4.png"
 
 class MainFragment
 constructor(
@@ -38,6 +39,10 @@ constructor(
 
         button_launch_camera.setOnClickListener {
             dispatchCameraIntent()
+        }
+
+        button_set_network_image.setOnClickListener {
+            setImageFromNetwork(NETWORK_IMAGE_URL)
         }
 
         setDefaultImage()
@@ -74,6 +79,14 @@ constructor(
                 }
             }
         }
+    }
+
+    fun setImageFromNetwork(url: String){
+        imageLoader
+            .loadImageUrl(
+                url,
+                image
+            )
     }
 
     fun setImageFromCamera(bitmap: Bitmap){
