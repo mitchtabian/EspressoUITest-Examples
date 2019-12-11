@@ -47,7 +47,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$androidx_test_espresso"
-    implementation "androidx.test.espresso:espresso-idling-resource:$androidx_test_espresso"
 
 
     // androidx.test
