@@ -14,7 +14,6 @@ import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 
-@OpenForTesting
 class MovieDetailFragment
 constructor(
     val requestOptions: RequestOptions,

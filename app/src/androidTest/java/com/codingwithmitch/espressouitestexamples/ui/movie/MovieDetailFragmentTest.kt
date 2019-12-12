@@ -11,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
 import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -38,7 +39,7 @@ class MovieDetailFragmentTest{
             arrayListOf("Dwayne Johnson", "Seann William Scott", "Rosario Dawson", "Christopher Walken")
         )
 
-        val moviesDataSource = mock(MoviesDataSource::class.java)
+        val moviesDataSource = mock(MoviesRemoteDataSource::class.java)
         `when`(moviesDataSource.getMovie(movieId)).thenReturn(movie)
 
         val requestOptions = RequestOptions()

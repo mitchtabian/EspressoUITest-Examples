@@ -8,7 +8,6 @@ import com.codingwithmitch.espressouitestexamples.ui.movie.DirectorsFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.MovieDetailFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
-@OpenForTesting
 class MovieFragmentFactory(
     private val requestOptions: RequestOptions? = null,
     private val moviesDataSource: MoviesDataSource? = null
