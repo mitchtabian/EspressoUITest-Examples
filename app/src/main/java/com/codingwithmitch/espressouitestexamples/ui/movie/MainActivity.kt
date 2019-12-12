@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             .error(R.drawable.default_image)
 
         // Data Source
-        moviesDataSource = MoviesRemoteDataSource
+        moviesDataSource = MoviesRemoteDataSource()
     }
 
 }

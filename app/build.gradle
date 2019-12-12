@@ -2,12 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-allopen'
 
-allOpen {
-    // allows mocking for classes w/o directly opening them for release builds
-    annotation 'com.codingwithmitch.espressouitestexamples.testing.OpenClass'
-}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"

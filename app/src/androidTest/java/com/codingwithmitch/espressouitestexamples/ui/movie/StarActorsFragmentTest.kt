@@ -12,7 +12,6 @@ import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
 import org.junit.Test
 
 import org.junit.runner.RunWith
-import java.lang.StringBuilder
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class StarActorsFragmentTest{

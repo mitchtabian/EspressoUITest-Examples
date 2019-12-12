@@ -38,6 +38,10 @@ class MovieDetailFragmentTest{
             arrayListOf("Dwayne Johnson", "Seann William Scott", "Rosario Dawson", "Christopher Walken")
         )
 
+
+        // NOTE:
+        // Also could have built a "FakeMoviesRemoteDataSource". I don't think it matters in
+        // this case. Either work.
         val moviesDataSource = mock(MoviesDataSource::class.java)
         `when`(moviesDataSource.getMovie(movieId)).thenReturn(movie)
 

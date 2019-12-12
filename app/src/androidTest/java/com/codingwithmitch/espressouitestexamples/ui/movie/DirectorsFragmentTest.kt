@@ -9,11 +9,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
-import kotlinx.android.synthetic.main.fragment_directors.*
 import org.junit.Test
 
 import org.junit.runner.RunWith
-import java.lang.StringBuilder
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class DirectorsFragmentTest{

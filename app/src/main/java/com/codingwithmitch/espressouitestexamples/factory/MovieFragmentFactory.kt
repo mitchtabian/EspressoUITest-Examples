@@ -3,12 +3,10 @@ package com.codingwithmitch.espressouitestexamples.factory
 import androidx.fragment.app.FragmentFactory
 import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
-import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 import com.codingwithmitch.espressouitestexamples.ui.movie.DirectorsFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.MovieDetailFragment
 import com.codingwithmitch.espressouitestexamples.ui.movie.StarActorsFragment
 
-@OpenForTesting
 class MovieFragmentFactory(
     private val requestOptions: RequestOptions? = null,
     private val moviesDataSource: MoviesDataSource? = null
