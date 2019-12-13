@@ -7,6 +7,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.*
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
@@ -27,15 +28,18 @@ class MovieListFragmentTest{
     @get: Rule
     val espressoIdlingResourceRule = EspressoIdlingResourceRule()
 
+    @get:Rule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
+
+
     @Test
     fun test_recreateActivity() {
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
 
         onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
 
-        activityScenario.recreate()
+        activityRule.scenario.recreate()
 
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
 
@@ -44,8 +48,6 @@ class MovieListFragmentTest{
 
     @Test
     fun test_isListFragmentVisible_onAppLaunch() {
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
 
         onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
@@ -53,9 +55,6 @@ class MovieListFragmentTest{
 
     @Test
     fun test_selectListItem_isDetailFragmentVisible() {
-
-        // GIVEN
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
         // Click list item #LIST_ITEM_IN_TEST
         onView(withId(R.id.recycler_view))
@@ -67,8 +66,6 @@ class MovieListFragmentTest{
 
     @Test
     fun test_backNavigation_toMovieListFragment() {
-        // GIVEN
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
         // Click list item #LIST_ITEM_IN_TEST
         onView(withId(R.id.recycler_view))
@@ -86,21 +83,12 @@ class MovieListFragmentTest{
     @Test
     fun test_navDirectorsFragment_validateDirectorsList() {
 
-        // GIVEN
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-
-        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
-
-        // Scroll to list item and click
-        onView(withId(R.id.recycler_view)).perform(scrollToPosition<MovieViewHolder>(LIST_ITEM_IN_TEST))
-
-        Thread.sleep(1000)
-
+        // Click list item #LIST_ITEM_IN_TEST
         onView(withId(R.id.recycler_view))
             .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
 
         // Confirm nav to DetailFragment and display title
-        onView(withId(R.id.movie_description)).check(matches(withText(MOVIE_IN_TEST.description)))
+        onView(withId(R.id.movie_title)).check(matches(withText(MOVIE_IN_TEST.title)))
 
         // Nav to DirectorsFragment
         onView(withId(R.id.movie_directiors)).perform(click())
@@ -114,8 +102,6 @@ class MovieListFragmentTest{
 
     @Test
     fun test_navStarActorsFragment_validateActorsList() {
-        // GIVEN
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
         // Click list item #LIST_ITEM_IN_TEST
         onView(withId(R.id.recycler_view))
