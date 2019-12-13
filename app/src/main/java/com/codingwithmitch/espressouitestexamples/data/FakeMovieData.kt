@@ -1,9 +1,6 @@
 package com.codingwithmitch.espressouitestexamples.data
 
-import com.codingwithmitch.espressouitestexamples.data.Movie
-import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
 
-@OpenForTesting
 object FakeMovieData {
 
     val movies = arrayOf(

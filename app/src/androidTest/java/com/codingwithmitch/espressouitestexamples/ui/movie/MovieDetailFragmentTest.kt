@@ -10,11 +10,12 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
-import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
 import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
+import io.mockk.every
+import io.mockk.mockk
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito.*
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
@@ -38,8 +39,15 @@ class MovieDetailFragmentTest{
             arrayListOf("Dwayne Johnson", "Seann William Scott", "Rosario Dawson", "Christopher Walken")
         )
 
-        val moviesDataSource = mock(MoviesDataSource::class.java)
-        `when`(moviesDataSource.getMovie(movieId)).thenReturn(movie)
+        // NOTE:
+        // Also could have built a "FakeMoviesRemoteDataSource" (AKA a STUB).
+        // I don't think it matters in this case.
+        // Probably for a larger repository and more complex app I would stub the repository. Then
+        // you could test errors, various success cases, etc...
+        val moviesDataSource = mockk<MoviesRemoteDataSource>()
+        every {
+            moviesDataSource.getMovie(movieId)
+        } returns movie
 
         val requestOptions = RequestOptions()
             .placeholder(R.drawable.default_image)

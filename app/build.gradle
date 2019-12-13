@@ -2,12 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-allopen'
 
-allOpen {
-    // allows mocking for classes w/o directly opening them for release builds
-    annotation 'com.codingwithmitch.espressouitestexamples.testing.OpenClass'
-}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -40,6 +35,7 @@ android {
     androidExtensions {
         experimental = true
     }
+
 }
 
 dependencies {
@@ -55,11 +51,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
 
-    // Mockito
-    def mockito_core = "2.25.0"
-    implementation "org.mockito:mockito-core:$mockito_core"
-    def mockito_android = "2.25.0"
-    androidTestImplementation "org.mockito:mockito-android:$mockito_android"
+    // Mockk.io
+    def mockk_version = "1.9.3"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
 
     // androidx.test
     def androidx_test = "1.1.0"
@@ -71,7 +65,6 @@ dependencies {
     def fragment_version = "1.2.0-rc01" // must use for new factory stuff
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
     implementation "androidx.fragment:fragment:$fragment_version"
-
 
     //glide
     def glide_version = "4.9.0"

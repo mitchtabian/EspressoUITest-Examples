@@ -1,6 +1,5 @@
 package com.codingwithmitch.espressouitestexamples.ui.movie
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
