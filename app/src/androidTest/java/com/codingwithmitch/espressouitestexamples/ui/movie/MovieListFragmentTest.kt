@@ -14,13 +14,11 @@ import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
 import com.codingwithmitch.espressouitestexamples.ui.movie.MoviesListAdapter.*
 import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
 import org.hamcrest.CoreMatchers.not
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
 import org.junit.runner.RunWith
+import org.junit.runners.MethodSorters
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieListFragmentTest{
 
@@ -42,7 +40,7 @@ class MovieListFragmentTest{
     }
 
     @Test
-    fun test_isListFragmentVisible_onAppLaunch() {
+    fun a_test_isListFragmentVisible_onAppLaunch() {
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
 
         onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
@@ -78,16 +76,12 @@ class MovieListFragmentTest{
     @Test
     fun test_navDirectorsFragment_validateDirectorsList() {
 
-        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
-
-        // Scroll to list item and click
-        onView(withId(R.id.recycler_view)).perform(scrollToPosition<MovieViewHolder>(LIST_ITEM_IN_TEST))
-
         onView(withId(R.id.recycler_view))
             .perform(actionOnItemAtPosition<MovieViewHolder>(LIST_ITEM_IN_TEST, click()))
 
-        // Confirm nav to DetailFragment and display title
-        onView(withId(R.id.movie_description)).check(matches(withText(MOVIE_IN_TEST.description)))
+        // Confirm nav to DetailFragment and display description
+        onView(withId(R.id.movie_description))
+            .check(matches(withText(MOVIE_IN_TEST.description)))
 
         // Nav to DirectorsFragment
         onView(withId(R.id.movie_directiors)).perform(click())

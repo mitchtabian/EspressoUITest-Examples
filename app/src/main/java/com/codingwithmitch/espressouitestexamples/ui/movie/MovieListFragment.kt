@@ -53,21 +53,21 @@ class MovieListFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        EspressoIdlingResource.increment()
         initRecyclerView()
         getData()
     }
 
     private fun getData(){
-        EspressoIdlingResource.increment()
         uiCommunicationListener.loading(true)
         val job = GlobalScope.launch(IO) {
             delay(FAKE_NETWORK_DELAY)
         }
         job.invokeOnCompletion{
             GlobalScope.launch(Main){
-                EspressoIdlingResource.decrement()
                 uiCommunicationListener.loading(false)
                 listAdapter.submitList(moviesDataSource.getMovies())
+                EspressoIdlingResource.decrement()
             }
         }
     }
