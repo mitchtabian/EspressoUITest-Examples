@@ -17,7 +17,7 @@ Watch the video course here: [UI Testing for Beginners](https://codingwithmitch.
 #### [Fragments in Isolation (simple)](https://github.com/mitchtabian/EspressoUITest-Examples/tree/fragments-in-isolation)
 1. Simple use case testing the fragments and their behavior with no dependencies
 
-#### [Fragments in Isolation (with Mockito & FragmentFactory Dependencies)](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-mocking-dependencies)
+#### [Fragments in Isolation (with Mockk & FragmentFactory Dependencies)](https://github.com/mitchtabian/EspressoUITest-Examples/tree/simple-mocking-dependencies)
 1. Testing kotlin final classes (making them open for testing)
 2. More complex tests and why dependency injection is recommended
 3. Providing dependencies with a FragmentFactory
