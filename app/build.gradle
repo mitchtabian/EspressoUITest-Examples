@@ -2,12 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-allopen'
 
-allOpen {
-    // allows mocking for classes w/o directly opening them for release builds
-    annotation 'com.codingwithmitch.espressouitestexamples.testing.OpenClass'
-}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -56,11 +51,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
     implementation "androidx.test.espresso:espresso-idling-resource:$androidx_test_espresso"
 
-    // Mockito
-    def mockito_core = "2.25.0"
-    implementation "org.mockito:mockito-core:$mockito_core"
-    def mockito_android = "2.25.0"
-    androidTestImplementation "org.mockito:mockito-android:$mockito_android"
+    // Mockk.io
+    def mockk_version = "1.9.3"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
 
     // androidx.test
     def androidx_test = "1.1.0"
