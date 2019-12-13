@@ -1,9 +1,5 @@
 package com.codingwithmitch.espressouitestexamples.data
 
-import com.codingwithmitch.espressouitestexamples.data.Movie
-import com.codingwithmitch.espressouitestexamples.testing.OpenForTesting
-
-@OpenForTesting
 object FakeMovieData {
 
     const val FAKE_NETWORK_DELAY = 2000L

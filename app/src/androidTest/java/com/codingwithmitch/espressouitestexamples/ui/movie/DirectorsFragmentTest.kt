@@ -9,7 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
-import kotlinx.android.synthetic.main.fragment_directors.*
+import com.codingwithmitch.espressouitestexamples.ui.movie.DirectorsFragment.Companion.stringBuilderForDirectors
 import org.junit.Test
 
 import org.junit.runner.RunWith
@@ -24,10 +24,7 @@ class DirectorsFragmentTest{
 
         // GIVEN
         val directors = arrayListOf("R.J. Stewart", "James Vanderbilt")
-        val verifyDirectorsValue: StringBuilder = StringBuilder()
-        for(director in directors){
-            verifyDirectorsValue.append(director + "\n")
-        }
+        val verifyDirectorsValue = stringBuilderForDirectors(directors)
         val fragmentFactory = MovieFragmentFactory(null, null)
         val bundle = Bundle()
         bundle.putStringArrayList("args_directors", directors)
