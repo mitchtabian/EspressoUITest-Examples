@@ -1,6 +1,7 @@
 package com.codingwithmitch.espressouitestexamples.util
 
 import androidx.test.espresso.IdlingRegistry
+import com.codingwithmitch.espressouitestingexamples.util.EspressoIdlingResource
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
