@@ -2,7 +2,7 @@ package com.codingwithmitch.espressouitestexamples.data
 
 object FakeMovieData {
 
-    const val FAKE_NETWORK_DELAY = 2000L
+    const val FAKE_NETWORK_DELAY = 1000L
 
     val movies = arrayOf(
         Movie(

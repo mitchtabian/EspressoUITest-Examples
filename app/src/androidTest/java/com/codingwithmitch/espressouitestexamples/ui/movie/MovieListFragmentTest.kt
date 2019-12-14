@@ -1,6 +1,5 @@
 package com.codingwithmitch.espressouitestexamples.ui.movie
 
-import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
@@ -15,13 +14,11 @@ import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
 import com.codingwithmitch.espressouitestexamples.ui.movie.MoviesListAdapter.*
 import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
 import org.hamcrest.CoreMatchers.not
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
 import org.junit.runner.RunWith
+import org.junit.runners.MethodSorters
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieListFragmentTest{
 
@@ -56,7 +53,7 @@ class MovieListFragmentTest{
     }
 
     @Test
-    fun test_isListFragmentVisible_onAppLaunch() {
+    fun a_test_isListFragmentVisible_onAppLaunch() {
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
 
         onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
