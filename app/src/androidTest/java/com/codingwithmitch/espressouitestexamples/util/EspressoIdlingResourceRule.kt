@@ -38,7 +38,7 @@ import org.junit.runner.Description
 
 /**
  * Option 2
- * I like option 2 better personally.
+ * Simplified version of option #1. (TestWatcher class implements TestRule)
  */
 class EspressoIdlingResourceRule: TestWatcher() {
 
