@@ -1,5 +1,6 @@
 package com.codingwithmitch.espressouitestexamples.ui.movie
 
+import android.content.pm.ActivityInfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
@@ -46,6 +47,10 @@ class MovieListFragmentTest{
         onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
 
         activityRule.scenario.recreate()
+
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
 
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
 
