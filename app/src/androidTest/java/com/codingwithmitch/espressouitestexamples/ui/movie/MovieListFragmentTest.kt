@@ -2,6 +2,7 @@ package com.codingwithmitch.espressouitestexamples.ui.movie
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.*
@@ -12,10 +13,9 @@ import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.FakeMovieData
 import com.codingwithmitch.espressouitestexamples.ui.movie.MoviesListAdapter.*
 import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResourceRule
+import com.codingwithmitch.espressouitestingexamples.util.EspressoIdlingResource
 import org.hamcrest.CoreMatchers.not
-import org.junit.FixMethodOrder
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
 
@@ -26,26 +26,12 @@ class MovieListFragmentTest{
     val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
 
-    @get: Rule
-    val espressoIdlingResourceRule = EspressoIdlingResourceRule()
-
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @get: Rule
+    val espressoIdlingResoureRule = EspressoIdlingResourceRule()
 
-    @Test
-    fun test_recreateActivity() {
-
-        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
-
-        onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
-
-        activityRule.scenario.recreate()
-
-        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
-
-        onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
-    }
 
     @Test
     fun a_test_isListFragmentVisible_onAppLaunch() {

@@ -60,8 +60,6 @@ class MovieDetailFragmentTest{
 
         onView(withId(R.id.movie_description)).check(matches(withText(description)))
 
-        scenario.recreate()
-
         // VERIFY nothing has changed
         onView(withId(R.id.movie_title)).check(matches(withText(title)))
 
