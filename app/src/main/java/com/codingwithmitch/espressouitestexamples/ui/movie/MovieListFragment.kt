@@ -13,7 +13,7 @@ import com.codingwithmitch.espressouitestexamples.data.FakeMovieData.FAKE_NETWOR
 import com.codingwithmitch.espressouitestexamples.data.Movie
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
 import com.codingwithmitch.espressouitestexamples.ui.UICommunicationListener
-import com.codingwithmitch.espressouitestexamples.util.EspressoIdlingResource
+import com.codingwithmitch.espressouitestingexamples.util.EspressoIdlingResource
 import com.codingwithmitch.espressouitestexamples.util.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 import kotlinx.coroutines.*

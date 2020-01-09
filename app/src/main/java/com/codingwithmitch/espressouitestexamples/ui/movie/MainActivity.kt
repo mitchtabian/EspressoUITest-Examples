@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(),
         }
         if(!::moviesDataSource.isInitialized){
             // Data Source
-            moviesDataSource = MoviesRemoteDataSource
+            moviesDataSource = MoviesRemoteDataSource()
         }
     }
 
