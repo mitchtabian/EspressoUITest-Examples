@@ -10,7 +10,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.bumptech.glide.request.RequestOptions
 import com.codingwithmitch.espressouitestexamples.R
 import com.codingwithmitch.espressouitestexamples.data.Movie
-import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
+import com.codingwithmitch.espressouitestexamples.data.source.MoviesDataSource
 import com.codingwithmitch.espressouitestexamples.factory.MovieFragmentFactory
 import io.mockk.every
 import io.mockk.mockk
@@ -39,7 +39,7 @@ class MovieDetailFragmentTest{
             arrayListOf("Dwayne Johnson", "Seann William Scott", "Rosario Dawson", "Christopher Walken")
         )
 
-        val moviesDataSource = mockk<MoviesRemoteDataSource>()
+        val moviesDataSource = mockk<MoviesDataSource>()
         every {
             moviesDataSource.getMovie(movieId)
         } returns movie
@@ -89,7 +89,7 @@ class MovieDetailFragmentTest{
         // I don't think it matters in this case.
         // Probably for a larger repository and more complex app I would stub the repository. Then
         // you could test errors, various success cases, etc...
-        val moviesDataSource = mockk<MoviesRemoteDataSource>()
+        val moviesDataSource = mockk<MoviesDataSource>()
         every {
             moviesDataSource.getMovie(movieId)
         } returns movie
