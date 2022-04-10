@@ -16,31 +16,30 @@ import java.lang.StringBuilder
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class StarActorsFragmentTest{
-
-
     @Test
-    fun test_isActorsListVisible() {
-
-        // GIVEN
-        val actors = arrayListOf(
-            "Dwayne Johnson",
-            "Seann William Scott",
-            "Rosario Dawson",
-            "Christopher Walken"
+    fun test_isDirectorsListVisible() {
+        //SETUP
+        val startActors = arrayListOf(
+            "Dwayne Johnson", "Seann William Scott",
+            "Rosario Dawson", "Christopher Walken"
         )
         val fragmentFactory = MovieFragmentFactory()
         val bundle = Bundle()
-        bundle.putStringArrayList("args_actors", actors)
+        bundle.putStringArrayList("args_actors", startActors)
+
         val scenario = launchFragmentInContainer<StarActorsFragment>(
-            fragmentArgs = bundle,
-            factory = fragmentFactory
+            fragmentArgs = bundle, factory = fragmentFactory
         )
 
-        // VERIFY
-        onView(withId(R.id.star_actors_text))
-            .check(matches(withText(
-                StarActorsFragment.stringBuilderForStarActors(actors)
-            )))
+        onView(withId(R.id.star_actors_text)).check(
+            matches(
+                withText(
+                    StarActorsFragment.stringBuilderForStarActors(
+                        startActors
+                    )
+                )
+            )
+        )
     }
 }
 
