@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/fragment_movie_directors_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:orientation="vertical"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/directors_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:id="@+id/directors_title"
             android:text="@string/text_directors"
+            android:textAlignment="textStart"
             android:textColor="#000"
-            android:textSize="30sp"
-            />
+            android:textSize="30sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/grey4"
             android:layout_marginTop="10dp"
-            >
-        </View>
+            android:background="@color/grey4"></View>
 
         <TextView
+            android:id="@+id/directors_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:id="@+id/directors_text"
-            android:textColor="#000"
-            android:textSize="21sp"
             android:layout_marginTop="10dp"
-            />
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:textSize="21sp" />
 
     </LinearLayout>
 
